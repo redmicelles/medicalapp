@@ -7,6 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+djangorestframework = "^3.14.0"
+django = "^4.2.5"
+psycopg2 = "^2.9.7"
 
 
 [build-system]
