@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from .config import config_dict
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-dgqpu$!1qs=z#%$ie^$3$n&al)4yv1=&4axb3ymo0rmr0kuz+("
+SECRET_KEY = config_dict.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,8 +76,12 @@ WSGI_APPLICATION = "medicalapp.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": config_dict.get("POSTGRESQL_DB_NAME"),
+        "USER": config_dict.get("POSTGRESQL_USER"),
+        "PASSWORD": config_dict.get("POSTGRESQL_PASSWORD"),
+        "HOST": config_dict.get("POSTGRESQL_HOST"),
+        "PORT": config_dict.get("POSTGRESQL_PORT"),
     }
 }
 
