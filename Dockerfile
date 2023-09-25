@@ -5,7 +5,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update \
-    && apt-get --yes install apt-utils
+    && apt-get -y install libpq-dev gcc \
+    && pip install psycopg2
 
 RUN pip install poetry==1.6.1
 

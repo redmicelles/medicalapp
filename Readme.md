@@ -10,3 +10,4 @@
 - Psycopg2
 - Pydantic
 - Pydantic Settings
+- djangorestframework-simplejwt 5.3.0
