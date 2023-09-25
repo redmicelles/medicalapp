@@ -30,12 +30,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny"
-    ],
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ]
+    ],
 }
 
 SIMPLE_JWT = {
@@ -143,5 +141,9 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_PROFILE_MODULE = 'users.CustomUser'
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_PROFILE_MODULE = "users.CustomUser"
+AUTH_USER_MODEL = "users.CustomUser"
+
+DATE_INPUT_FORMATS = [
+    "%d-%m-%Y",
+]

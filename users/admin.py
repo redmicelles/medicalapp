@@ -10,11 +10,13 @@ from typing import Any, Union
 
 class UserCreationForm(forms.ModelForm):
     password1: Any = forms.CharField(label="Password", widget=forms.PasswordInput)
-    password2: Any = forms.CharField(label="Password confirmation", widget=forms.PasswordInput)
+    password2: Any = forms.CharField(
+        label="Password confirmation", widget=forms.PasswordInput
+    )
 
     class Meta:
         model: Any = CustomUser
-        fields: tuple = ("email", "full_name")
+        fields: tuple = ("email", "surname", "other_names", "date_of_birth")
 
     def clean_password2(self):
         password1: str = self.cleaned_data.get("password1")
@@ -36,7 +38,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model: Any = CustomUser
-        fields: tuple = ("email", "password", "full_name", "is_active")
+        fields: tuple = ("email", "password", "other_names", "surname", "date_of_birth", "is_active")
 
     def clean_password(self):
         return self.initial["password"]
@@ -45,18 +47,21 @@ class UserChangeForm(forms.ModelForm):
 class UserAdmin(BaseUserAdmin):
     form: Any = UserChangeForm
     add_form: Any = UserCreationForm
-    list_display: tuple = ("email", "full_name", "is_admin")
-    list_filter: tuple = ("is_admin", )
+    list_display: tuple = ("email", "other_names", "surname", "date_of_birth", "is_admin")
+    list_filter: tuple = ("is_admin",)
     fieldsets: tuple = (
         (None, {"fields": ("email", "password")}),
-        ("Personal info", {"fields": ("full_name",)}),
+        ("Personal info", {"fields": ("other_names", "surname", "date_of_birth")}),
         ("Permissions", {"fields": ("is_admin",)}),
     )
     add_fieldsets: tuple = (
-        (None, {
-            "classes": ("wide",),
-            "fields": ("email", "full_name", 'password1', 'password2'),
-        }),
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("email", "other_names", "surname", "date_of_birth", "password1", "password2"),
+            },
+        ),
     )
     search_fields: tuple = ("email",)
     ordering: tuple = ("email",)

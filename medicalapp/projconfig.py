@@ -4,6 +4,7 @@ from pydantic_settings import BaseSettings
 
 load_dotenv()
 
+
 class Config(BaseSettings):
     DJANGO_SECRET_KEY: str = Field(validation_alias="DJANGO_SECRET_KEY")
     POSTGRESQL_USER: str = Field(validation_alias="POSTGRES_USER")
