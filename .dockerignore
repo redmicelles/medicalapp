@@ -1,0 +1,5 @@
+**/*.sqlite3
+**/__pycache__/
+Dockerfile
+docker-compose.yaml
+Readme.md
