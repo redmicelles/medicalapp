@@ -10,7 +10,15 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model: Any = CustomUser
-        fields: tuple = ("email", "other_names", "surname", "date_of_birth", "password", "password2")
+        fields: tuple = (
+            "pk",
+            "email",
+            "other_names",
+            "surname",
+            "date_of_birth",
+            "password",
+            "password2",
+        )
         extra_kwargs: dict = {"password": {"write_only": True}}
 
     def save(self) -> Any:

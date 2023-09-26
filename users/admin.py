@@ -41,7 +41,14 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model: Any = CustomUser
-        fields: tuple = ("email", "password", "other_names", "surname", "date_of_birth", "is_active")
+        fields: tuple = (
+            "email",
+            "password",
+            "other_names",
+            "surname",
+            "date_of_birth",
+            "is_active",
+        )
 
     def clean_password(self):
         return self.initial["password"]
@@ -50,7 +57,13 @@ class UserChangeForm(forms.ModelForm):
 class UserAdmin(BaseUserAdmin):
     form: Any = UserChangeForm
     add_form: Any = UserCreationForm
-    list_display: tuple = ("email", "other_names", "surname", "date_of_birth", "is_admin")
+    list_display: tuple = (
+        "email",
+        "other_names",
+        "surname",
+        "date_of_birth",
+        "is_admin",
+    )
     list_filter: tuple = ("is_admin",)
     fieldsets: tuple = (
         (None, {"fields": ("email", "password")}),
@@ -62,7 +75,14 @@ class UserAdmin(BaseUserAdmin):
             None,
             {
                 "classes": ("wide",),
-                "fields": ("email", "other_names", "surname", "date_of_birth", "password1", "password2"),
+                "fields": (
+                    "email",
+                    "other_names",
+                    "surname",
+                    "date_of_birth",
+                    "password1",
+                    "password2",
+                ),
             },
         ),
     )

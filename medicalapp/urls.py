@@ -21,4 +21,5 @@ from .projconfig import config_dict
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/{version}/auth/".format(version="v1.0"), include("users.urls")),
+    path("api/{version}/records/".format(version="v1.0"), include("hrecords.urls")),
 ]
