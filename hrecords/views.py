@@ -4,6 +4,7 @@ from rest_framework import generics
 from rest_framework import permissions
 from typing import Any
 from common.pydantic_models import URLParams
+from rest_framework import exceptions
 
 
 class RecordListCreateAPIView(generics.ListCreateAPIView):
@@ -16,10 +17,16 @@ class RecordListCreateAPIView(generics.ListCreateAPIView):
         if self.request.user.is_staff:
             return super().get_queryset()
         return Record.objects.filter(patient=self.request.user).all()
+        try:
+            Record.objects.filter(patient=self.request.user).all()
+        except Record.DoesNotExist:
+            raise exceptions.NotFound
 
     def perform_create(self, serializer):
-        serializer.validated_data
-        serializer.save()
+        if self.request.user.is_staff:
+            serializer.validated_data
+            serializer.save()
+        raise exceptions.PermissionDenied
 
 
 record_list_create_view: Any = RecordListCreateAPIView.as_view()

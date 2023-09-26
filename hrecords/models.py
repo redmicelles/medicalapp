@@ -3,7 +3,6 @@ from users.models import CustomUser
 from typing import Any
 from datetime import date
 
-
 # Create your models here.
 class Record(models.Model):
     patient: Any = models.ForeignKey(

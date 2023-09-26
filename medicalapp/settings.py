@@ -10,6 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
+
+APP_PATH = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 from pathlib import Path
 from .projconfig import config_dict
 from datetime import timedelta
@@ -28,18 +33,6 @@ SECRET_KEY = config_dict.get("DJANGO_SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ],
-}
-
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=config_dict.get("ACCESS_TOKEN_TTL")),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=config_dict.get("REFRESH_TOKEN_TTL")),
-}
 
 # Application definition
 
@@ -63,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "medicalapp.errorhandler.CustomErrorHandlerMiddleware"
 ]
 
 ROOT_URLCONF = "medicalapp.urls"
@@ -139,6 +133,19 @@ STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+    "EXCEPTION_HANDLER": "medicalapp.errorhandler.global_exception_handler"
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=config_dict.get("ACCESS_TOKEN_TTL")),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=config_dict.get("REFRESH_TOKEN_TTL")),
+}
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
