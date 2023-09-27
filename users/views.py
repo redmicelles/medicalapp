@@ -25,10 +25,10 @@ class RegistrationView(APIView):
             response_data = APIResponseModel.model_validate({"data": serializer.data})
             return Response(
                 response_data,
-                status=status.HTTP_201_CREATED,
+                status=201,
             )
         error_data: dict = APIErrorModel.model_validate({"error": serializer.errors})
-        return Response(error_data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(error_data, status=400)
 
 
 register_view: Any = RegistrationView.as_view()
@@ -45,12 +45,12 @@ class LoginView(APIView):
             auth_data: dict = get_tokens_for_user(request.user)
             return Response(
                 APIResponseModel.model_validate({"data": auth_data}),
-                status=status.HTTP_200_OK,
+                status=200,
             )
         error_data: dict = APIErrorModel.model_validate(
             {"error": {"message": "Invalid authentication credential(s)!"}}
         )
-        return Response(error_data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(error_data, status=400)
 
 
 login_view: Any = LoginView.as_view()
@@ -63,7 +63,7 @@ class LogoutView(APIView):
             APIResponseModel.model_validate(
                 {"data": {"message": "Successfully logged out"}}
             ),
-            status=status.HTTP_200_OK,
+            status=200,
         )
 
 
@@ -79,10 +79,16 @@ class ChangePasswordView(APIView):
         serializer = PasswordChangeSerializer(
             context={"request": request}, data=request.data
         )
-        serializer.is_valid(raise_exception=True)
-        request.user.set_password(serializer.validated_data["new_password"])
-        request.user.save()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        if serializer.is_valid():
+            request.user.set_password(serializer.validated_data["new_password"])
+            request.user.save()
+            response_data = APIResponseModel.model_validate({"data": serializer.data})
+            return Response(
+                response_data,
+                status=204,
+            )
+        error_data: dict = APIErrorModel.model_validate({"error": serializer.errors})
+        return Response(error_data, status=400)
 
 
 change_password_view: Any = ChangePasswordView.as_view()

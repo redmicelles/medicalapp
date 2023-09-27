@@ -30,6 +30,9 @@ def global_exception_handler(exc, context) -> Union[JsonResponse, None]:
     if isinstance(exc, drf_exceptions.NotAuthenticated):
         err_message: dict = {"error": {"message": str(exc)}}
         return JsonResponse(err_message, safe=False, status=403)
+    if isinstance(exc, drf_exceptions.MethodNotAllowed):
+        err_message: dict = {"error": {"message": str(exc)}}
+        return JsonResponse(err_message, safe=False, status=405)
     if isinstance(exc, drf_exceptions.PermissionDenied):
         err_message: dict = {"error": {"message": str(exc)}}
         return JsonResponse(err_message, safe=False, status=403)

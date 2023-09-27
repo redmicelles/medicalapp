@@ -1,0 +1,1028 @@
+{
+	"info": {
+		"_postman_id": "ae7e6a8f-668b-494a-aad5-a4b64576c9d1",
+		"name": "ANAVARA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29835614"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"thomas@gmail.com\",\r\n    \"other_names\": \"Thomas\",\r\n    \"surname\": \"Woods\",\r\n    \"date_of_birth\": \"1998-08-30\",\r\n    \"password\": \"Simplepass123!\",\r\n    \"password2\": \"Simplepass123!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/auth/register",
+				"description": "This API require elevated access, so a Bearer token belonging an Admin is required for Authentication."
+			},
+			"response": [
+				{
+					"name": "register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"angel@gmail.com\",\r\n    \"other_names\": \"Angel\",\r\n    \"surname\": \"Woods\",\r\n    \"date_of_birth\": \"1998-08-30\",\r\n    \"password\": \"Simplepass123!\",\r\n    \"password2\": \"Simplepass123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/auth/register"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 07:32:35 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "118"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": {\n        \"data\": {\n            \"email\": \"angel@gmail.com\",\n            \"other_names\": \"Angel\",\n            \"surname\": \"Woods\",\n            \"date_of_birth\": \"1998-08-30\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "user-login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"angel@gmail.com\",\r\n    \"password\": \"Simplepass123!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/auth/login"
+			},
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"angel@gmail.com\",\r\n    \"password\": \"Simplepass123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/auth/login"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 07:40:28 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "505"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "csrftoken=AcIdVQj9smaeP2isk1faIIgGDbwjh0un; expires=Wed, 25 Sep 2024 07:40:28 GMT; Max-Age=31449600; Path=/; SameSite=Lax"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sessionid=sqp68mtitw6j57g0h5lx8blhjcflhr8y; expires=Wed, 11 Oct 2023 07:40:28 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": {\n        \"data\": {\n            \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5NTg4NjgyOCwiaWF0IjoxNjk1ODAwNDI4LCJqdGkiOiI3ZDZhZDliZDAxOTY0YTE3ODI0OWIyNzcwYTYzMTNiNSIsInVzZXJfaWQiOjJ9.3BoaJYgBuYraTDvXbh5lkGPJh-MhlPiBU8nZm61OayU\",\n            \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1ODg2ODI4LCJpYXQiOjE2OTU4MDA0MjgsImp0aSI6IjNjNjVhZTQwMDhkNTQyY2Y5M2I4MDBiZWJmYzQ1ODBjIiwidXNlcl9pZCI6Mn0.suieymCSBv7KqftKXAH3k5wvyjks4f6wOkIALRqCBrk\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "admin-login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"dexterdaniel@gmail.com\",\r\n    \"password\": \"PassWord@3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/auth/login"
+			},
+			"response": [
+				{
+					"name": "admin-login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"rafique@gmail.com\",\r\n    \"password\": \"AdminPass132&\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/auth/login"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 07:41:41 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "505"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "csrftoken=ILuI6ETpS78RZUx7tJ6rKF0veJKeeFWs; expires=Wed, 25 Sep 2024 07:41:41 GMT; Max-Age=31449600; Path=/; SameSite=Lax"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sessionid=ri6nkkgn94okv8xdu5uo8x0cy4uqjioa; expires=Wed, 11 Oct 2023 07:41:41 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": {\n        \"data\": {\n            \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5NTg4NjkwMSwiaWF0IjoxNjk1ODAwNTAxLCJqdGkiOiI1MmNiY2Y3MTg4ZTc0NzNjOTI0ZTE3ZWYzNWM1YjA2ZCIsInVzZXJfaWQiOjF9.v5WIOofD9fY5jd5MzyvqFbm-lgkxeyhO-XGjp2fy66E\",\n            \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1ODg2OTAxLCJpYXQiOjE2OTU4MDA1MDEsImp0aSI6IjY2ZDU0ZTcyMWRkOTQxZWU5OWM0NTkzOTE4ZTU5Y2U4IiwidXNlcl9pZCI6MX0.yxE2qqyjPUTOXr-otxeKMrppZjBc4DplQegbKIxAT24\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{USER_BEARER_TOKEN}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"angel@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/auth/logout"
+			},
+			"response": [
+				{
+					"name": "logout",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"angel@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/auth/logout"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 07:44:33 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "59"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sessionid=\"\"; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; SameSite=Lax"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": {\n        \"data\": {\n            \"message\": \"Successfully logged out\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "changepassword",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1ODg3Mzk3LCJpYXQiOjE2OTU4MDA5OTcsImp0aSI6ImFiM2Q5YjJjZmY3ODQ2NWRhZmYzNDEzMTBkYzMxOGZjIiwidXNlcl9pZCI6Mn0.sIJStWWhlu7tdwc91a-jXjEfYeBLZljfXhNdZS7Aj1E"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"current_password\": \"Simplepass123!\",\r\n    \"new_password\": \"Simplepass123!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/auth/change-password",
+				"description": "This API requires a Bearer Token."
+			},
+			"response": [
+				{
+					"name": "changepassword",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"current_password\": \"Simplepass1234!\",\r\n    \"new_password\": \"Simplepass123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/auth/change-password"
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 09:58:47 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "92"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": {\n        \"data\": {\n            \"current_password\": \"Simplepass1234!\",\n            \"new_password\": \"Simplepass123!\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "refresh-token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1ODUwMTUyLCJpYXQiOjE2OTU3NjM3NTIsImp0aSI6ImM5M2U2NmUxMjdmODQ4YWNhOGQ1OGRiNzc4YTM2MjdjIiwidXNlcl9pZCI6Nn0.eM8rfDW8cr9C4VfKhq0hkou8kshcuxGFc9DnL-9uL6k"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5NTg4ODUwNywiaWF0IjoxNjk1ODAyMTA3LCJqdGkiOiIzMWQ4YzY0YzU2N2E0NGVjODYxNzJhNTExNDAyNzJmZCIsInVzZXJfaWQiOjN9.ZSXjE4T42IPV20AClc_lTbtbOuE8vQWmHu3IlxrBw5g\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/auth/token-refresh/",
+				"description": "This API requires a Bearer Token which has to be a Refresh Token."
+			},
+			"response": [
+				{
+					"name": "refresh-token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5NTg4ODUwNywiaWF0IjoxNjk1ODAyMTA3LCJqdGkiOiIzMWQ4YzY0YzU2N2E0NGVjODYxNzJhNTExNDAyNzJmZCIsInVzZXJfaWQiOjN9.ZSXjE4T42IPV20AClc_lTbtbOuE8vQWmHu3IlxrBw5g\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/auth/token-refresh/"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 08:11:22 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "241"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1ODg4NjgyLCJpYXQiOjE2OTU4MDIxMDcsImp0aSI6ImUxNDQxYTRhMWZlZjRjNmNiNjNiYmUzNjc1YTdiM2YyIiwidXNlcl9pZCI6M30.472Lrh7GGTTPRQEtQxQNOBOKbUr2zus4nt6weEow_-M\"\n}"
+				}
+			]
+		},
+		{
+			"name": "record-create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1ODg2OTAxLCJpYXQiOjE2OTU4MDA1MDEsImp0aSI6IjY2ZDU0ZTcyMWRkOTQxZWU5OWM0NTkzOTE4ZTU5Y2U4IiwidXNlcl9pZCI6MX0.yxE2qqyjPUTOXr-otxeKMrppZjBc4DplQegbKIxAT24"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"doctor\": \"Seyi Daniel\",\r\n    \"diagnosis\": \"Malaria\",\r\n    \"treatment\": \"PCM/2/7\",\r\n    \"date_of_treatment\": \"2023-09-27\",\r\n    \"patient\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/records/create/",
+				"description": "This API require elevated access, so a Bearer token belonging an Admin is required for Authentication."
+			},
+			"response": [
+				{
+					"name": "record-create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"doctor\": \"Seyi Daniel\",\r\n    \"diagnosis\": \"Malaria\",\r\n    \"treatment\": \"PCM/2/7\",\r\n    \"date_of_treatment\": \"2023-09-28\",\r\n    \"patient\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/records/create/"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 10:07:29 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "215"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"doctor\": \"Seyi Daniel\",\n    \"diagnosis\": \"Malaria\",\n    \"treatment\": \"PCM/2/7\",\n    \"date_of_treatment\": \"2023-09-27\",\n    \"patient\": {\n        \"pk\": 2,\n        \"email\": \"angel@gmail.com\",\n        \"other_names\": \"Angel\",\n        \"surname\": \"Woods\",\n        \"date_of_birth\": \"1998-08-30\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "allrecords",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1ODg4NTA3LCJpYXQiOjE2OTU4MDIxMDcsImp0aSI6ImQ5ZWNlOTBkZjcyMzQwOTZiNmY1NjdhZDI3Y2NkYmVhIiwidXNlcl9pZCI6M30.UjRVlqJCmN7A1drzwM8y8T1rAiKDmNTyzeELw-Mnf3w"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/records",
+				"description": "This API requires a Bearer Token"
+			},
+			"response": [
+				{
+					"name": "allrecords",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/records"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 10:09:32 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "338"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"pk\": 1,\n        \"url\": \"http://localhost:8000/api/v1.0/records/1/\",\n        \"doctor\": \"Seyi Daniel\",\n        \"diagnosis\": \"Malaria\",\n        \"treatment\": \"PCM/2/7\",\n        \"date_of_treatment\": \"2023-09-27\",\n        \"update_url\": \"http://localhost:8000/api/v1.0/records/1/update/\",\n        \"patient\": {\n            \"pk\": 2,\n            \"email\": \"angel@gmail.com\",\n            \"other_names\": \"Angel\",\n            \"surname\": \"Woods\",\n            \"date_of_birth\": \"1998-08-30\"\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "record-detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1Nzk0MzE0LCJpYXQiOjE2OTU3MDc5MTQsImp0aSI6IjI5OWFlNDg1YTEzOTRlNTc5ZThjMjg2YzlkZjJlODhmIiwidXNlcl9pZCI6MX0.kO1oE22FeqcyBstZv6K0N3udMEtp2qn5VnOEbjfgiyI"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"doctor\": \"Seyi Daniel\",\r\n    \"diagnosis\": \"Wellnessq\",\r\n    \"treatment\": \"Wellness\",\r\n    \"date_of_treatment\": \"2023-09-25\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/records/1"
+			},
+			"response": [
+				{
+					"name": "record-detail",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"doctor\": \"Seyi Daniel\",\r\n    \"diagnosis\": \"Wellnessq\",\r\n    \"treatment\": \"Wellness\",\r\n    \"date_of_treatment\": \"2023-09-25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/records/1"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 10:10:31 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "336"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"pk\": 1,\n    \"url\": \"http://localhost:8000/api/v1.0/records/1/\",\n    \"doctor\": \"Seyi Daniel\",\n    \"diagnosis\": \"Malaria\",\n    \"treatment\": \"PCM/2/7\",\n    \"date_of_treatment\": \"2023-09-27\",\n    \"update_url\": \"http://localhost:8000/api/v1.0/records/1/update/\",\n    \"patient\": {\n        \"pk\": 2,\n        \"email\": \"angel@gmail.com\",\n        \"other_names\": \"Angel\",\n        \"surname\": \"Woods\",\n        \"date_of_birth\": \"1998-08-30\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "record-update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1ODk1MDg5LCJpYXQiOjE2OTU4MDg2ODksImp0aSI6IjM2ODhlZmNlYmVmNjRkNzJiMGViOTM0NzU2MTRiODBjIiwidXNlcl9pZCI6MX0.VJPUvlPs2CNg84VCW4CLWRfUPlCbpWqbTsQCUPaOxWA"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"doctor\": \"Seyi Daniels\",\r\n    \"diagnosis\": \"Wellnessqoo\",\r\n    \"treatment\": \"Wellnessww9\",\r\n    \"date_of_treatment\": \"2024-09-21\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/records/1/update/",
+				"description": "This API require elevated access, so a Bearer token belonging an Admin is required for Authentication."
+			},
+			"response": [
+				{
+					"name": "record-update",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"doctor\": \"Seyi Daniels\",\r\n    \"diagnosis\": \"Wellnessqoo\",\r\n    \"treatment\": \"Wellnessww9\",\r\n    \"date_of_treatment\": \"2024-09-21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/records/1/update/"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 10:11:43 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "PUT, PATCH, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "345"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"pk\": 1,\n    \"url\": \"http://localhost:8000/api/v1.0/records/1/\",\n    \"doctor\": \"Seyi Daniels\",\n    \"diagnosis\": \"Wellnessqoo\",\n    \"treatment\": \"Wellnessww9\",\n    \"date_of_treatment\": \"2023-09-27\",\n    \"update_url\": \"http://localhost:8000/api/v1.0/records/1/update/\",\n    \"patient\": {\n        \"pk\": 2,\n        \"email\": \"angel@gmail.com\",\n        \"other_names\": \"Angel\",\n        \"surname\": \"Woods\",\n        \"date_of_birth\": \"1998-08-30\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "record-delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1ODk1MDg5LCJpYXQiOjE2OTU4MDg2ODksImp0aSI6IjM2ODhlZmNlYmVmNjRkNzJiMGViOTM0NzU2MTRiODBjIiwidXNlcl9pZCI6MX0.VJPUvlPs2CNg84VCW4CLWRfUPlCbpWqbTsQCUPaOxWA"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASE_URL}}/records/1/delete/",
+				"description": "This API require elevated access, so a Bearer token belonging an Admin is required for Authentication."
+			},
+			"response": [
+				{
+					"name": "record-delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/records/1/delete/"
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 27 Sep 2023 10:12:34 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.5"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "DELETE, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8000/api/v1.0"
+		}
+	]
+}
