@@ -20,4 +20,4 @@ class Record(models.Model):
         )
 
     class Meta:
-        ordering = ["date_of_treatment"]
+        ordering: list = ["date_of_treatment"]

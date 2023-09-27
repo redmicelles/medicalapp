@@ -86,12 +86,8 @@ WSGI_APPLICATION = "medicalapp.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": config_dict.get("POSTGRESQL_DB_NAME"),
-        "USER": config_dict.get("POSTGRESQL_USER"),
-        "PASSWORD": config_dict.get("POSTGRESQL_PASSWORD"),
-        "HOST": config_dict.get("POSTGRESQL_HOST"),
-        "PORT": config_dict.get("POSTGRESQL_PORT"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 

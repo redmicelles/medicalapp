@@ -1,7 +1,7 @@
 from rest_framework import serializers, reverse
 from .models import Record
 from users.serializers import RegistrationSerializer
-from typing import Any
+from typing import Any, Union
 
 
 class RecordSerializer(serializers.ModelSerializer):
@@ -26,8 +26,8 @@ class RecordSerializer(serializers.ModelSerializer):
         self.fields["patient"] = RegistrationSerializer(read_only=True)
         return super(RecordSerializer, self).to_representation(instance)
 
-    def get_update_url(self, obj):
-        request = self.context.get("request")
+    def get_update_url(self, obj: Any) -> Union[str, Any, None]:
+        request: dict = self.context.get("request")
         if request:
             return reverse.reverse(
                 "record-update", kwargs={"pk": obj.pk}, request=request
@@ -35,7 +35,6 @@ class RecordSerializer(serializers.ModelSerializer):
 
 
 class CreateRecordSerializer(serializers.ModelSerializer):
-
     class Meta:
         model: Record = Record
         fields: tuple = (
@@ -46,6 +45,6 @@ class CreateRecordSerializer(serializers.ModelSerializer):
             "patient",
         )
 
-    def to_representation(self, instance):
+    def to_representation(self, instance: Any) -> dict:
         self.fields["patient"] = RegistrationSerializer(read_only=True)
         return super(CreateRecordSerializer, self).to_representation(instance)

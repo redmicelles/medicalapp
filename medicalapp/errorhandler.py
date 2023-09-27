@@ -8,37 +8,39 @@ from rest_framework_simplejwt import exceptions as jwt_exceptions
 from django.http.response import Http404
 from rest_framework import exceptions as drf_exceptions
 from pydantic import ValidationError
+from typing import Union
 
 
-def global_exception_handler(exc, context):
-    response = exception_handler(exc, context)
+def global_exception_handler(exc, context) -> Union[JsonResponse, None]:
+    response: response = exception_handler(exc, context)
     if isinstance(exc, Http404):
-        err_message = {"error": {"message": str(exc)}}
+        err_message: dict = {"error": {"message": str(exc)}}
         return JsonResponse(err_message, safe=False, status=400)
     if isinstance(exc, TypeError):
-        err_message = {"error": {"message": str(exc)}}
+        err_message: dict = {"error": {"message": str(exc)}}
         return JsonResponse(err_message, safe=False, status=400)
     if isinstance(exc, ValidationError):
-        errors = exc.errors()[0]
-        errors.pop("url")
-        err_message = {"error": {"message": errors}}
+        errors: dict = exc.errors()[0]
+        errors.pop("url", None)
+        err_message: dict = {"error": {"message": errors}}
         return JsonResponse(err_message, safe=False, status=422)
     if isinstance(exc, jwt_exceptions.InvalidToken):
-        err_message = {"error": {"message": "Invalid token presented!"}}
+        err_message: dict = {"error": {"message": "Invalid token presented!"}}
         return JsonResponse(err_message, safe=False, status=401)
-    # if isinstance(exc, drf_exceptions.ValidationError):
-    #     err_message = {"error": {"message": str(exc)}}
-    #     return JsonResponse(err_message, safe=False, status=400)
     if isinstance(exc, drf_exceptions.NotAuthenticated):
-        err_message = {"error": {"message": str(exc)}}
+        err_message: dict = {"error": {"message": str(exc)}}
         return JsonResponse(err_message, safe=False, status=403)
     if isinstance(exc, drf_exceptions.PermissionDenied):
-        err_message = {"error": {"message": str(exc)}}
+        err_message: dict = {"error": {"message": str(exc)}}
         return JsonResponse(err_message, safe=False, status=403)
     if isinstance(exc, drf_exceptions.APIException):
-        return JsonResponse({"error": {"message": exc.detail.get("message")}}, safe=False, status=exc.detail.get("status"))
+        return JsonResponse(
+            {"error": {"message": exc.detail.get("message")}},
+            safe=False,
+            status=exc.detail.get("status"),
+        )
     if isinstance(exc, Exception):
-        err_message = (
+        err_message: tuple = (
             {
                 "error": {
                     "message": "We've just hit a snag! We've noted this and will address it shortly!!"
@@ -78,12 +80,6 @@ class CustomErrorHandlerMiddleware:
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
-
-        # if response.status_code == 401:
-        #     return JsonResponse(
-        #         {"error": {"message": "Authentication failed!"}},
-        #         status=status.HTTP_401_UNAUTHORIZED,
-        #     )
 
         if str(response.status_code).startswith("5"):
             logging.error(f"Internal Server Error!!!: {str(response)}")
