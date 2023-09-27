@@ -56,7 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "medicalapp.errorhandler.CustomErrorHandlerMiddleware"
+    "medicalapp.errorhandler.CustomErrorHandlerMiddleware",
 ]
 
 ROOT_URLCONF = "medicalapp.urls"
@@ -139,7 +139,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
-    "EXCEPTION_HANDLER": "medicalapp.errorhandler.global_exception_handler"
+    "EXCEPTION_HANDLER": "medicalapp.errorhandler.global_exception_handler",
 }
 
 SIMPLE_JWT = {

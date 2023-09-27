@@ -20,7 +20,6 @@ class RecordSerializer(serializers.ModelSerializer):
             "treatment",
             "date_of_treatment",
             "update_url",
-            "patient",
         )
 
     def to_representation(self, instance):
@@ -33,3 +32,20 @@ class RecordSerializer(serializers.ModelSerializer):
             return reverse.reverse(
                 "record-update", kwargs={"pk": obj.pk}, request=request
             )
+
+
+class CreateRecordSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model: Record = Record
+        fields: tuple = (
+            "doctor",
+            "diagnosis",
+            "treatment",
+            "date_of_treatment",
+            "patient",
+        )
+
+    def to_representation(self, instance):
+        self.fields["patient"] = RegistrationSerializer(read_only=True)
+        return super(CreateRecordSerializer, self).to_representation(instance)

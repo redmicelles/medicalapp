@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.11"
 djangorestframework = "^3.14.0"
 django = "^4.2"
-pydantic = "^2.3"
+pydantic = {version = "^2.3", extras = ["email"]}
 pydantic-settings = "^2.0.3"
 djangorestframework-simplejwt = "^5.3.0"
 

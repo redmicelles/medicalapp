@@ -2,5 +2,5 @@
 **/__pycache__/
 **/migrations/
 Readme.md
-**/log/
+**/logs/
 .env

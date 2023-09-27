@@ -7,15 +7,22 @@ from rest_framework.views import APIView
 from .helpers.token import get_tokens_for_user
 from .serializers import RegistrationSerializer, PasswordChangeSerializer
 from rest_framework_simplejwt import views as jwt_views
-
+from medicalapp.common.pydantic_models import CreateUserRequest, LoginRequest, APIResponseModel, APIErrorModel
+from rest_framework import exceptions
 
 class RegistrationView(APIView):
     def post(self, request):
+        CreateUserRequest.model_validate(self.request.data)
         serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            response_data = APIResponseModel.model_validate({"data": serializer.data})
+            return Response(
+                response_data,
+                status=status.HTTP_201_CREATED,
+            )
+        error_data = APIErrorModel.model_validate({"error": serializer.errors})
+        return Response(error_data, status=status.HTTP_400_BAD_REQUEST)
 
 
 register_view = RegistrationView.as_view()
@@ -23,22 +30,18 @@ register_view = RegistrationView.as_view()
 
 class LoginView(APIView):
     def post(self, request):
-        if "email" not in request.data or "password" not in request.data:
-            return Response(
-                {"msg": "Credentials missing"}, status=status.HTTP_400_BAD_REQUEST
-            )
+        LoginRequest.model_validate(request.data)
         email = request.data.get("email")
         password = request.data.get("password")
         user = authenticate(request, email=email, password=password)
-        if user is not None:
+        if user:
             login(request, user)
             auth_data = get_tokens_for_user(request.user)
             return Response(
-                {"msg": "Login Success", **auth_data}, status=status.HTTP_200_OK
+                APIResponseModel.model_validate({"data": auth_data}), status=status.HTTP_200_OK
             )
-        return Response(
-            {"msg": "Invalid Credentials"}, status=status.HTTP_401_UNAUTHORIZED
-        )
+        error_data = APIErrorModel.model_validate({"error": {"message": "Invalid authentication credential(s)!"}})
+        return Response(error_data, status=status.HTTP_400_BAD_REQUEST)
 
 
 login_view = LoginView.as_view()
@@ -47,7 +50,7 @@ login_view = LoginView.as_view()
 class LogoutView(APIView):
     def post(self, request):
         logout(request)
-        return Response({"msg": "Successfully Logged out"}, status=status.HTTP_200_OK)
+        return Response(APIResponseModel.model_validate({"data": {"message": "Successfully logged out"}}), status=status.HTTP_200_OK)
 
 
 logout_view = LogoutView.as_view()
