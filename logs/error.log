@@ -260,3 +260,21 @@ django.utils.autoreload - 27-Sep-23 10:06:52 - INFO - /medicalapp/medicalapp/err
 django.request - 27-Sep-23 10:07:07 - WARNING - Unprocessable Entity: /api/v1.0/records/create/
 django.request - 27-Sep-23 10:11:08 - WARNING - Forbidden: /api/v1.0/records/1/update/
 django.request - 27-Sep-23 10:12:18 - WARNING - Bad Request: /api/v1.0/records/2/delete/
+django.request - 27-Sep-23 10:33:38 - WARNING - Not Found: /swagger/
+django.utils.autoreload - 27-Sep-23 10:45:16 - INFO - /medicalapp/medicalapp/urls.py changed, reloading.
+drf_yasg.inspectors.base - 27-Sep-23 10:45:45 - WARNING - view's RecordDetailAPIView raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+           ^^^^^^^^^^^^^
+  File "/medicalapp/hrecords/views.py", line 52, in get_queryset
+    urlparam: dict = URLParams.model_validate(self.kwargs).model_dump()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pydantic/main.py", line 503, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for URLParams
+pk
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+django.request - 27-Sep-23 11:24:21 - WARNING - Bad Request: /api/v1.0/auth/register
